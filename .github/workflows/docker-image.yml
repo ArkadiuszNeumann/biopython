@@ -1,0 +1,19 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: all
+  workflow_dispatch:
+jobs:
+  container:
+    runs-on: arek2233/biopython:latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Test
+      run: |
+        python setup.py build
+        python setup.py test --offline
+    - name: Build the Docker image
+      run: docker build -t arek2233/biopython:biopython .
+    - name: Push 
+      run: docker push arek2233/biopython:biopython
