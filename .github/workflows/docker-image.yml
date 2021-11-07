@@ -15,25 +15,28 @@ jobs:
         run: |
           python setup.py build
           python setup.py test --offline
-      - name: Build the Docker image
-        run: docker build -t arek2233/biopython:biopython .
-      - name: Push 
-        run: docker push arek2233/biopython:biopython
-      - name: Send mail
-        uses: dawidd6/action-send-mail@v3
-        with:
-          # Required mail server address:
-          server_address: smtp.gmail.com
-          # Required mail server port:
-          server_port: 465
-          # Required mail subject:
-          subject: Github Actions job result
-          # Required recipients' addresses:
-          to: arkadiusz.neumann@intel.com
-          # Required sender full name (address can be skipped):
-          from: Arek ZIOM # <user@example.com>
-          # Optional whether this connection use TLS (default is true if server_port is 465)
-          secure: true
-          # Optional plain body:
-          body: Build job of ${{github.repository}} completed successfully!
-          # Optional HTML body read from file:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Build the Docker image
+      run: docker build -t arek2233/biopython:biopython .
+    - name: Push 
+      run: docker push arek2233/biopython:biopython
+    - name: Send mail
+      uses: dawidd6/action-send-mail@v3
+      with:
+        # Required mail server address:
+        server_address: smtp.gmail.com
+        # Required mail server port:
+        server_port: 465
+        # Required mail subject:
+        subject: Github Actions job result
+        # Required recipients' addresses:
+        to: arkadiusz.neumann@intel.com
+        # Required sender full name (address can be skipped):
+        from: Arek ZIOM # <user@example.com>
+        # Optional whether this connection use TLS (default is true if server_port is 465)
+        secure: true
+        # Optional plain body:
+        body: Build job of ${{github.repository}} completed successfully!
+        # Optional HTML body read from file:
