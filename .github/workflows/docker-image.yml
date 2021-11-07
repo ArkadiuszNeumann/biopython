@@ -20,7 +20,7 @@ jobs:
       - name: Push 
         run: docker push arek2233/biopython:biopython
       - name: Send mail
-      - uses: dawidd6/action-send-mail@v3
+        uses: dawidd6/action-send-mail@v3
         with:
           # Required mail server address:
           server_address: smtp.gmail.com
