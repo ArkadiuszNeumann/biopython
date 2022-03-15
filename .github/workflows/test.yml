@@ -16,6 +16,7 @@ jobs:
 
       - name: List all changed files
         run: |
+          chmod +x .github/verify_header.sh
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
             .github/verify_header.sh $file
