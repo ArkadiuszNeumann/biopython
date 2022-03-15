@@ -10,5 +10,8 @@ then
     if [[ $year == ${BASH_REMATCH[3]} ]]
     then
         echo ten sam
+    else
+        exit 1
     fi
+    
 fi
