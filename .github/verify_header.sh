@@ -11,6 +11,7 @@ then
     then
         echo ten sam
     else
+        echo $1 does not contain proper licence header
         exit 1
     fi
     
