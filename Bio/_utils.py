@@ -11,6 +11,7 @@
 import os
 
 
+
 def find_test_dir(start_dir=None):
     """Find the absolute path of Biopython's Tests directory.
 
