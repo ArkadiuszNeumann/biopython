@@ -9,7 +9,7 @@ on:
       - master
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Login Harbor
@@ -22,7 +22,7 @@ jobs:
         run: |
           docker push ${REGISTRY}/${CONTAINER_PATH}:latest
   update_version:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: update version
         run: |
