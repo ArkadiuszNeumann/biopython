@@ -39,3 +39,4 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: ${{ env.FILE_WITH_VERSION }}
+          message: "increase version number"
