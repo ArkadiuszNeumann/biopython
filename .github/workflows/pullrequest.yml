@@ -8,18 +8,16 @@ on:
     branches:
       - master
 jobs:
-  update-verion:
+  build:
+    name: Input check
     runs-on: ubuntu-latest
     steps:
-      - name: echo
+      - name: Checking your input
         run: |
-          echo ${{ github.event.pull_request.merged }}
-      - uses: actions/checkout@v2
-        if:  github.event.pull_request.merged == ""
-      - name: update version
-        run: |
-          echo ${{ github.event.pull_request.merged }}
-        
-
-          
-        
+          echo "github.event.pull_request.merged           : $MERGED_RAW"
+          echo "github.event.pull_request.merged == 'true' : $MERGED_TRUE_STR"
+          echo "github.event.pull_request.merged  == true  : $MERGED_TRUE_BOOL"
+        env:
+          MERGED_RAW: ${{ github.event.pull_request.merged }}
+          MERGED_TRUE_STR: ${{ github.event.pull_request.merged == 'true' }}
+          MERGED_TRUE_BOOL: ${{ github.event.pull_request.merged == true }}
