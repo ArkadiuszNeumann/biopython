@@ -9,15 +9,27 @@ on:
       - master
 jobs:
   build:
-    name: Input check
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: Checking your input
+      - uses: actions/checkout@v2
+      - name: Login Harbor
         run: |
-          echo "github.event.pull_request.merged           : $MERGED_RAW"
-          echo "github.event.pull_request.merged == 'true' : $MERGED_TRUE_STR"
-          echo "github.event.pull_request.merged  == true  : $MERGED_TRUE_BOOL"
-        env:
-          MERGED_RAW: ${{ github.event.pull_request.merged }}
-          MERGED_TRUE_STR: ${{ github.event.pull_request.merged == 'true' }}
-          MERGED_TRUE_BOOL: ${{ github.event.pull_request.merged == true }}
+          docker login ${REGISTRY} -u '${{ secrets.USERNAME_HARBOR }}' -p '${{ secrets.PASSWORD_HARBOR }}'
+      - name: Build
+        run: |
+          docker build -t ${REGISTRY}/${CONTAINER_PATH}:latest .
+      - name: Push
+        run: |
+          docker push ${REGISTRY}/${CONTAINER_PATH}:latest
+  update_version:
+    runs-on: self-hosted
+    steps:
+      - name: update version
+        run: |
+          export version=$(cat $FILE_WITH_VERION | grep -w  'cacheVersion = ' | awk '{print $4}' |  tr -d "';")
+          export new_version=$(echo $(( version + 1 )))
+          sed -i "s|$version|$new_version"|g" $FILE_WITH_VERION
+      - name: Commit changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: ${FILE_WITH_VERION}
