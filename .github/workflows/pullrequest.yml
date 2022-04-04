@@ -1,0 +1,16 @@
+name: pullrequest
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  update-verion:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: update version
+        if:  github.event.pull_request.merged == true
+        run: |
+        
