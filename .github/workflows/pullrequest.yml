@@ -7,10 +7,11 @@ on:
 
 jobs:
   update-verion:
+    if:  github.event.pull_request.merged == true
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
       - name: update version
-        if:  github.event.pull_request.merged == true
         run: |
+          echo done
         
