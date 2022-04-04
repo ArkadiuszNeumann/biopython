@@ -9,10 +9,13 @@ on:
       - master
 jobs:
   update-verion:
-    if:  github.event.pull_request.merged != false
     runs-on: ubuntu-latest
     steps:
+      - name: echo
+        run: |
+          echo ${{ github.event.pull_request.merged }}
       - uses: actions/checkout@v2
+        if:  github.event.pull_request.merged != false
       - name: update version
         run: |
           echo ${{ github.event.pull_request.merged }}
