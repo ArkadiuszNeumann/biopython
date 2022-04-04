@@ -13,7 +13,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: update version
         run: |
-          echo {{ github.event.pull_request.merged }}
+          echo ${{ github.event.pull_request.merged }}
         
 
           
