@@ -14,6 +14,7 @@
 # flake8-sfs : SFS### (in case installed locally)
 # =================================================
 
+
 [flake8]
 doctests = True
 # Exclude some file types and folders that shouldn't be checked:
