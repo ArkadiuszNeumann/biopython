@@ -8,7 +8,7 @@ on:
 jobs:
   update-verion:
 #     if:  github.event.pull_request.merged == true
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: update version
