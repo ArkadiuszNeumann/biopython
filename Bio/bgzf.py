@@ -15,6 +15,7 @@ which can be applied to any file format to provide compression with
 efficient random access. BGZF is described together with the SAM/BAM
 file format at https://samtools.sourceforge.net/SAM1.pdf
 
+
 Please read the text below about 'virtual offsets' before using BGZF
 files for random access.
 
