@@ -7,6 +7,10 @@ on:
   push:
     branches:
       - master
+
+env:
+  FILE_WITH_VERSION: "Client/wwwroot/service-worker.published.js"
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,10 +30,10 @@ jobs:
     steps:
       - name: update version
         run: |
-          export version=$(cat $FILE_WITH_VERION | grep -w  'cacheVersion = ' | awk '{print $4}' |  tr -d "';")
+          export version=$(cat $FILE_WITH_VERSION | grep -w  'cacheVersion = ' | awk '{print $4}' |  tr -d "';")
           export new_version=$(echo $(( version + 1 )))
-          sed -i "s|$version|$new_version|g" $FILE_WITH_VERION
+          sed -i "s|$version|$new_version|g" $FILE_WITH_VERSION
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
-          add: ${FILE_WITH_VERION}
+          add: ${FILE_WITH_VERSION}
