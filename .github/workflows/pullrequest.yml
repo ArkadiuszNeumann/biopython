@@ -37,7 +37,7 @@ jobs:
           export version=$(cat $FILE_WITH_VERSION | grep -w  'cacheVersion = ' | awk '{print $4}' |  tr -d "';")
           export new_version=$(echo $(( version + 1 )))
           sed -i "s|$version|$new_version|g" $FILE_WITH_VERSION
-          echo ${{ github.event.commiter.username }}
+          echo ${{ github.event.committer.username }}
       - name: commit changes
         uses: actions-js/push@v1.3
         with:
