@@ -29,6 +29,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: update version
         run: |
           export version=$(cat $FILE_WITH_VERSION | grep -w  'cacheVersion = ' | awk '{print $4}' |  tr -d "';")
