@@ -29,12 +29,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+          fetch-depth: 0
       - name: update version
         run: |
           export version=$(cat $FILE_WITH_VERSION | grep -w  'cacheVersion = ' | awk '{print $4}' |  tr -d "';")
           export new_version=$(echo $(( version + 1 )))
           sed -i "s|$version|$new_version|g" $FILE_WITH_VERSION
-          cat $FILE_WITH_VERSION
       - name: commit changes
         uses: actions-js/push@v1.3
         with:
