@@ -40,3 +40,4 @@ jobs:
         with:
           add: ${{ env.FILE_WITH_VERSION }}
           message: "increase version number"
+          default_author: user_info 
