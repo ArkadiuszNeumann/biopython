@@ -27,7 +27,7 @@ jobs:
         run: |
           docker push ${REGISTRY}/${CONTAINER_PATH}:latest
   update_version:
-    
+    if: "!contains(github.event.commits[0].author.name, 'github-actions')"
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
