@@ -37,10 +37,10 @@ jobs:
           export new_version=$(echo $(( version + 1 )))
           sed -i "s|$version|$new_version|g" $FILE_WITH_VERSION
           cat $FILE_WITH_VERSION
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v9
+      - name: GitHub Commit & Push
+        uses: actions-js/push@v1.3
         with:
-          add: ${{ env.FILE_WITH_VERSION }}
           message: "increase version number"
-          default_author: user_info 
+          branch: master
           github_token: ${{ secrets.TOKEN }}
+
