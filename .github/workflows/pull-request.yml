@@ -20,6 +20,7 @@ jobs:
           files_ignore: '.github/**'
       - name: List all changed files
         run: |
+          chmod +x .github/verify_header.sh
           for FILE in ${{ steps.changed-files.outputs.all_changed_files }}; do
             REGEX=".*\.(.*)"
             if [[  "$FILE" =~ $REGEX ]]
