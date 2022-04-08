@@ -8,7 +8,6 @@ while read -r line; do
             echo $1 have appropriate license header
             exit 0
         fi
-        echo $1 have wrong license header year
         continue
     fi
 done < "$1"
