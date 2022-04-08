@@ -1,6 +1,6 @@
 
-# Revisions 2007-2010 copyright by Peter Cock.  All rights reserved.
-# Revisions 2009 copyright by Brad Chapman.  All rights reserved.
+# Copyright(c) 2025 copyright by Peter Cock.  All rights reserved.
+# Copyright(c) 2021-2021 copyright by Brad Chapman.  All rights reserved.
 # Copyright(c) 2021-2022 copyright by Tiago Antao.  All rights reserved.
 # Copyright(c) 2022 by Andrew Dalke.  All rights reserved.
 # This file is part of the Biopython distribution and governed by your
