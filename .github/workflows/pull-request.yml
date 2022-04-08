@@ -20,9 +20,9 @@ jobs:
           files_ignore: '.github/**'
       - name: List all changed files
         run: |
-          for "FILE" in ${{ steps.changed-files.outputs.all_changed_files }}; do
+          for FILE in ${{ steps.changed-files.outputs.all_changed_files }}; do
             REGEX=".*\.(.*)"
-            if [[  $FILE =~ $REGEX ]]
+            if [[  "$FILE" =~ $REGEX ]]
             then
                 EXTENSION=${BASH_REMATCH[1]}
                 EXTENSIONS_LIST=($EXTENSIONS)
