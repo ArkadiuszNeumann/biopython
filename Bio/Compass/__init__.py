@@ -1,4 +1,4 @@
-# Copyright 2004 by James Casbon.  All rights reserved.
+# Copyright 2003 by James Casbon.  All rights reserved.
 #
 # This file is part of the Biopython distribution and governed by your
 # choice of the "Biopython License Agreement" or the "BSD 3-Clause License".
