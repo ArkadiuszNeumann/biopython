@@ -1,4 +1,4 @@
-# Copyright 2002 by Andrew Dalke.  All rights reserved.
+# Copyright 2005 by Andrew Dalke.  All rights reserved.
 # Revisions 2007-2016 copyright by Peter Cock.  All rights reserved.
 # Revisions 2008 copyright by Cymon J. Cox.  All rights reserved.
 #
