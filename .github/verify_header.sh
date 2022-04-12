@@ -8,7 +8,6 @@ while read -r line; do
             echo $1 have appropriate license header
             exit 0
         fi
-        continue
     fi
 done < "$1"
 
